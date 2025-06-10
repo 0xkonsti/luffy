@@ -58,7 +58,6 @@ bool string_append_cstr(string_t* str, char const* cstr, usize const cstr_length
 
     if (string_is_full(*str)) {
         usize new_capacity = (str->capacity + cstr_length) * STRING_GROWTH_FACTOR + 1;
-        printf("Resizing string from %zu to %zu\n", str->capacity, new_capacity);
         char* new_data = realloc(str->data, new_capacity * sizeof(char));
         if (!new_data) {
             return false;
