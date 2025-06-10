@@ -1,0 +1,7 @@
+[submodule "libs/glfw"]
+	path = libs/glfw
+	url = https://github.com/glfw/glfw.git
+	branch = 3.3-stable
+[submodule "libs/unity"]
+	path = libs/unity
+	url = https://github.com/ThrowTheSwitch/Unity.git
