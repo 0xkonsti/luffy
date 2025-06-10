@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "luffy/ansi.h"
 
 #include <stdio.h>
@@ -36,11 +37,12 @@ char* ansi_formated_multi(char const* str, ansi_t fmts[], usize fmts_count) {
     }
 
     formatted_str[0] = '\0';
+    usize total_len = len + 1;
     for (usize i = 0; i < fmts_count; ++i) {
-        strcat(formatted_str, fmts[i]);
+        strncat(formatted_str, fmts[i], total_len - strlen(formatted_str) - 1);
     }
-    strcat(formatted_str, str);
-    strcat(formatted_str, ANSI_RESET);
+    strncat(formatted_str, str, total_len - strlen(formatted_str) - 1);
+    strncat(formatted_str, ANSI_RESET, total_len - strlen(formatted_str) - 1);
 
     return formatted_str;
 }

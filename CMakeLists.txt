@@ -4,15 +4,14 @@ project(luffy VERSION 0.1.0 LANGUAGES C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-option(BUILD_SHARED_LIBS "Build shared libraries (.so/.dll) instead of static (.a/.lib)" ON)
+option(BUILD_SHARED_LIBS "Build shared libraries (.so/.dll) instead of static (.a/.lib)" OFF)
 option(LUFFY_ENABLE_GRAPHICS "Enable OpenGL/GLFW components" OFF)
 option(LUFFY_BUILD_TESTS "Build tests for the library" ON)
 
 include_directories(include)
 
-set(LUFFY_CORE_SOURCES
-    # TODO: Add source files here
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/string.c
+file(GLOB_RECURSE LUFFY_CORE_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
 )
 
 if(LUFFY_ENABLE_GRAPHICS)
