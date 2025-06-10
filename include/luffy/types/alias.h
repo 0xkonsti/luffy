@@ -2,6 +2,7 @@
 #define LUFFY_TYPES_ALIAS_H
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 // Aliases for fixed-width integers
@@ -26,6 +27,4 @@ typedef ptrdiff_t isize;
 // Boolean type
 typedef bool bool_t;
 
-
-
-#endif // LUFFY_TYPES_ALIAS_H
+#endif  // LUFFY_TYPES_ALIAS_H
