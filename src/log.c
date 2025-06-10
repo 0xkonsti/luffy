@@ -55,3 +55,4 @@ void set_log_level(int const level) {
     }
     G_LUFFY_LOG_LEVEL = level;
 }
+
