@@ -8,7 +8,7 @@ option(BUILD_SHARED_LIBS "Build shared libraries (.so/.dll) instead of static (.
 option(LUFFY_ENABLE_GRAPHICS "Enable OpenGL/GLFW components" OFF)
 option(LUFFY_BUILD_TESTS "Build tests for the library" ON)
 
-include_directories(include
+include_directories(include)
 
 set(LUFFY_CORE_SOURCES
     # TODO: Add source files here
