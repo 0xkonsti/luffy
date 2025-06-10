@@ -1,0 +1,14 @@
+BasedOnStyle: Google
+IndentWidth: 4
+UseTab: Never
+TabWidth: 4
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+AllowShortFunctionsOnASingleLine: None
+DerivePointerAlignment: false
+PointerAlignment: Left
+QualifierAlignment: Right
+InsertNewlineAtEOF: true
+SpaceInEmptyBlock: true
+ColumnLimit: 120
+LineEnding: DeriveLF
