@@ -11,7 +11,7 @@ include_directories(include)
 
 set(LUFFY_CORE_SOURCES
     # TODO: Add source files here
-    src/test.c
+    src/string.c
 )
 
 if(LUFFY_ENABLE_GRAPHICS)

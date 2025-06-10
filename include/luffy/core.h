@@ -1,4 +1,6 @@
 #ifndef LUFFY_CORE_H
 #define LUFFY_CORE_H
 
-#endif // LUFFY_CORE_H
+#include "types.h"
+
+#endif  // LUFFY_CORE_H

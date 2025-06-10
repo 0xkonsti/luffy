@@ -3,5 +3,7 @@
 
 #include "types/alias.h"
 #include "types/option.h"
+#include "types/result.h"
+#include "types/string.h"
 
-#endif // LUFFY_TYPES_H
+#endif  // LUFFY_TYPES_H
