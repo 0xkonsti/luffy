@@ -6,12 +6,13 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 option(BUILD_SHARED_LIBS "Build shared libraries (.so/.dll) instead of static (.a/.lib)" ON)
 option(LUFFY_ENABLE_GRAPHICS "Enable OpenGL/GLFW components" OFF)
+option(LUFFY_BUILD_TESTS "Build tests for the library" ON)
 
-include_directories(include)
+include_directories(include
 
 set(LUFFY_CORE_SOURCES
     # TODO: Add source files here
-    src/string.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/string.c
 )
 
 if(LUFFY_ENABLE_GRAPHICS)
@@ -36,22 +37,34 @@ if(LUFFY_ENABLE_GRAPHICS)
 endif()
 
 add_library(luffy ${LUFFY_CORE_SOURCES})
+add_library(luffy::luffy ALIAS luffy)
+
+target_include_directories(luffy PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
 
 if(LUFFY_ENABLE_GRAPHICS)
+    target_include_directories(luffy PUBLIC libs/glad/include libs/glfw/include)
     target_link_libraries(luffy PRIVATE glfw)
+    target_compile_definitions(luffy PUBLIC LUFFY_ENABLE_GRAPHICS)
 endif()
 
-install(DIRECTORY include/luffy DESTINATION include)
+install(DIRECTORY include/ DESTINATION include)
 install(TARGETS luffy
-        ARCHIVE DESTINATION lib
-        LIBRARY DESTINATION lib
-        RUNTIME DESTINATION bin)
+    EXPORT luffyTargets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+install(EXPORT luffyTargets
+    FILE luffyConfig.cmake
+    NAMESPACE luffy::
+    DESTINATION lib/cmake/luffy
+)
 
-# Add tests
-# if(LUFFY_ENABLE_GRAPHICS)
-#     enable_testing()
-#     add_subdirectory(tests_graphics)
-# endif()
-
-enable_testing()
-add_subdirectory(tests)
+# Tests (optional)
+if(LUFFY_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

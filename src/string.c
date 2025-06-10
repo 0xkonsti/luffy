@@ -8,7 +8,7 @@ option_string_t string_init(usize const capacity) {
         _capacity = STRING_INIT_CAPACITY + 1;
     }
 
-    string_t str;
+    string_t str = {0};
     str.data = malloc(_capacity * sizeof(char));
 
     if (!str.data) {
